@@ -113,6 +113,11 @@ h1 {
         background-color: #477f99;
     }
 
+#gridSizeText {
+    color: #24414e;
+    font-family: 'Jost', 'Roboto', cursive;
+}
+
 .sketch {
     display: flex;
     flex-wrap: wrap;
@@ -121,7 +126,7 @@ h1 {
 }
 
 .cell {
-    flex-basis: calc(100% / 16);
+    flex-grow: 1; /* Allow cells to grow to fill the container */
     background-color: #d6fff1;
     box-sizing: border-box;
     cursor: pointer;

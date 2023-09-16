@@ -4,10 +4,23 @@ let isRainbow = false; // Flag to track rainbow mode
 
 // Function to create the grid
 function createGrid(rows, columns) {
+    // Clear the existing grid
+    sketch.innerHTML = '';
+
     for (let i = 0; i < rows * columns; i++) {
         const cell = document.createElement('div');
         cell.classList.add('cell');
         sketch.appendChild(cell);
+    }
+
+    const cellWidth = sketch.clientWidth / columns; // Calculate cell width
+    const cellHeight = sketch.clientHeight / rows; // Calculate cell height
+
+    const cells = document.querySelectorAll('.cell');
+
+    cells.forEach((cell) => {
+        cell.style.width = `${cellWidth}px`; // Set cell width
+        cell.style.height = `${cellHeight}px`; // Set cell height
 
         // Mouseover event for coloring cells when drawing
         cell.addEventListener('mouseover', (event) => {
@@ -25,7 +38,7 @@ function createGrid(rows, columns) {
                 event.target.style.backgroundColor = selectedColor;
             }
         });
-    }
+    });
 }
 
 createGrid(16, 16);
@@ -33,6 +46,8 @@ createGrid(16, 16);
 const btnDraw = document.querySelector('.btn.draw');
 const btnRainbow = document.querySelector('.btn.rainbow');
 const btnClear = document.querySelector('.btn.clear');
+const gridSizeSlider = document.querySelector('#setgrid');
+const gridSizeText = document.querySelector('#gridSizeText');
 
 btnDraw.addEventListener('click', () => {
     isDrawing = !isDrawing; // Toggle drawing state
@@ -56,6 +71,20 @@ btnClear.addEventListener('click', () => {
         cell.style.backgroundColor = '#d6fff1';
     });
 });
+
+// Event listener for grid size slider
+gridSizeSlider.addEventListener('input', () => {
+    const gridSize = parseInt(gridSizeSlider.value, 10); // Get the selected grid size
+    const rows = gridSize; // Use the selected grid size directly
+    const columns = gridSize;
+
+    // Update the grid size
+    createGrid(rows, columns);
+
+    // Update the grid size text
+    gridSizeText.textContent = `${rows}x${columns}`;
+});
+
 
 function getRandomColor() {
     return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
