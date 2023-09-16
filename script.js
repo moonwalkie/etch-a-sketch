@@ -1,5 +1,6 @@
 const sketch = document.querySelector('.sketch');
 let isDrawing = false; // Flag to track drawing state
+let isRainbow = false; // Flag to track rainbow mode
 
 // Function to create the grid
 function createGrid(rows, columns) {
@@ -10,20 +11,18 @@ function createGrid(rows, columns) {
 
         // Mouseover event for coloring cells when drawing
         cell.addEventListener('mouseover', (event) => {
-            if (isDrawing) {
-                const selectedColor = document.getElementById('setcolor').value;
+            if ((isDrawing || isRainbow) && event.buttons === 1) {
+                const selectedColor = isRainbow ? getRandomColor() : document.getElementById('setcolor').value;
                 event.target.style.backgroundColor = selectedColor;
             }
         });
 
         // Mousedown event to start drawing
         cell.addEventListener('mousedown', () => {
-            isDrawing = true; // Press to start drawing
-        });
-
-        // Mouseup event to stop drawing
-        cell.addEventListener('mouseup', () => {
-            isDrawing = false; // Release to stop drawing
+            if (isDrawing || isRainbow) {
+                const selectedColor = isRainbow ? getRandomColor() : document.getElementById('setcolor').value;
+                event.target.style.backgroundColor = selectedColor;
+            }
         });
     }
 }
@@ -31,11 +30,21 @@ function createGrid(rows, columns) {
 createGrid(16, 16);
 
 const btnDraw = document.querySelector('.btn.draw');
+const btnRainbow = document.querySelector('.btn.rainbow');
 const btnClear = document.querySelector('.btn.clear');
 
 btnDraw.addEventListener('click', () => {
     isDrawing = !isDrawing; // Toggle drawing state
     btnDraw.classList.toggle('active');
+    btnRainbow.classList.remove('active');
+    isRainbow = false;
+});
+
+btnRainbow.addEventListener('click', () => {
+    isRainbow = !isRainbow;
+    btnRainbow.classList.toggle('active');
+    btnDraw.classList.remove('active');
+    isDrawing = false;
 });
 
 btnClear.addEventListener('click', () => {
@@ -46,3 +55,7 @@ btnClear.addEventListener('click', () => {
         cell.style.backgroundColor = '#d6fff1';
     });
 });
+
+function getRandomColor() {
+    return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+}
