@@ -116,3 +116,16 @@ h1 {
     cursor: pointer;
     transition: all ease 0.2s;
 }
+
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column-reverse;
+    }
+
+    .mode {
+        display: flex;
+        flex-wrap: wrap;
+        width: 30rem;
+        height: 7rem;
+    }
+}
