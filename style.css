@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Pacifico&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(50% 50rem, #112720, #0e151d);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5rem;
+}
+
+h1 {
+    font-family: 'Pacifico', 'Jost', 'Roboto', cursive;
+    font-weight: 400;
+    color: aquamarine;
+    font-size: 4rem;
+    margin-top: 5rem;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+}
+
+.mode {
+    background-color: aquamarine;
+    width: 12rem;
+    height: 25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 0.7rem;
+    border: 0.5rem solid white;
+}
+
+.colorpicker {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+#setcolor {
+    border: 0;
+    padding: 0;
+    width: 200%;
+    height: 200%;
+    cursor: pointer;
+    transform: translate(-25%, -25%)
+}
+
+#setgrid {
+    cursor: pointer;
+    accent-color: #112720;
+}
+
+.sketch {
+    background-color: aquamarine;
+    width: 30rem;
+    height: 30rem;
+    border-radius: 0.7rem;
+    border: 0.5rem solid white;
+}
