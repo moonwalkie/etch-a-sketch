@@ -80,6 +80,17 @@ h1 {
         color: #9ec2bf;
     }
 
+.btn.draw {
+    transition: 0.3s all ease;
+}
+
+.btn.draw.active {
+    background: linear-gradient(to right, #96760d 30%, #a39511 70%);
+    border-radius: 0.3rem;
+    box-shadow: 0 0.1rem #155458;
+    color: #9ec2bf;
+}
+
 #setgrid {
     appearance: none;
     cursor: pointer;
