@@ -44,8 +44,8 @@ h1 {
 }
 
 .colorpicker {
-    width: 5rem;
-    height: 5rem;
+    width: 4rem;
+    height: 4rem;
     border-radius: 50%;
     overflow: hidden;
 }
@@ -91,6 +91,13 @@ h1 {
     color: #9ec2bf;
 }
 
+.slider {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 #setgrid {
     appearance: none;
     cursor: pointer;
@@ -107,6 +114,7 @@ h1 {
     background-color: #5396b4;
     box-shadow: 0 0 0.2rem #1e2d3f;
     transition: 0.2s all ease;
+    pointer-events: none;
 }
 
     #setgrid::-webkit-slider-thumb:hover {
@@ -116,6 +124,8 @@ h1 {
 #gridSizeText {
     color: #24414e;
     font-family: 'Jost', 'Roboto', cursive;
+    font-size: 0.8rem;
+    pointer-events: none;
 }
 
 .sketch {
@@ -142,6 +152,7 @@ h1 {
         display: flex;
         flex-wrap: wrap;
         width: 30rem;
-        height: 7rem;
+        height: 6rem;
+        padding: 0.5rem;
     }
 }
