@@ -18,8 +18,9 @@ function createGrid(rows, columns) {
         });
 
         // Mousedown event to start drawing
-        cell.addEventListener('mousedown', () => {
+        cell.addEventListener('mousedown', (event) => {
             if (isDrawing || isRainbow) {
+                event.preventDefault(); // Prevent text selection
                 const selectedColor = isRainbow ? getRandomColor() : document.getElementById('setcolor').value;
                 event.target.style.backgroundColor = selectedColor;
             }
