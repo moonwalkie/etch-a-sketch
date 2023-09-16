@@ -31,8 +31,18 @@ function createGrid(rows, columns) {
 createGrid(16, 16);
 
 const btnDraw = document.querySelector('.btn.draw');
+const btnClear = document.querySelector('.btn.clear');
 
 btnDraw.addEventListener('click', () => {
     isDrawing = !isDrawing; // Toggle drawing state
     btnDraw.classList.toggle('active');
+});
+
+btnClear.addEventListener('click', () => {
+    const cells = document.querySelectorAll('.cell');
+
+    // Reset the background color of all cells to the default color
+    cells.forEach((cell) => {
+        cell.style.backgroundColor = '#d6fff1';
+    });
 });
