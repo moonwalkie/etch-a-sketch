@@ -4,13 +4,46 @@ body {
     min-height: 100vh;
     margin: 0;
     padding: 0;
-    background: radial-gradient(50% 50rem, #112720, #0e151d);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     gap: 1rem;
     flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(50% 50rem, #112720, #0e151d);
+    z-index: -2;
+}
+
+.ellipse {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80rem;
+    height: 70rem;
+    opacity: 0; /* Initially, make it invisible */
+    animation: pulsate 4s ease-in-out infinite; /* Apply pulsating effect to the ellipse */
+    position: absolute;
+    z-index: -1;
+}
+
+@keyframes pulsate {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.75;
+    }
 }
 
 h1 {
