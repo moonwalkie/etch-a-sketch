@@ -32,7 +32,7 @@ body::before {
     width: 80rem;
     height: 70rem;
     opacity: 0; /* Initially, make it invisible */
-    animation: pulsate 4s ease-in-out infinite; /* Apply pulsating effect to the ellipse */
+    animation: pulsate 4s ease-in-out infinite 0.5s; /* Apply pulsating effect to the ellipse */
     position: absolute;
     z-index: -1;
 }
@@ -52,6 +52,7 @@ h1 {
     color: #178862;
     font-size: 4rem;
     margin-top: 3rem;
+    pointer-events: none;
 }
 
 body .container {
@@ -240,6 +241,53 @@ body .container {
 .toggle-switch input:checked::before {
     transform: translateX(1rem);
 }
+
+/* Pulse Toggle */
+.toggle-pulse {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: absolute;
+    right: 0;
+    margin: 1rem 1rem 0 0;
+}
+
+.toggle-pulse label {
+    color: #5396b4;
+    font-family: 'Jost', 'Roboto', cursive;
+    font-size: 1.2rem;
+    pointer-events: none;
+    transition: all ease 0.3s;
+}
+
+.toggle-pulse input {
+    appearance: none;
+    width: 3rem;
+    height: 1.5rem;
+    background-color: #24414e;
+    border-radius: 1.5rem;
+    position: relative;
+    cursor: pointer;
+}
+
+.toggle-pulse input::before {
+    content: '';
+    position: absolute;
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: #5396b4;
+    border-radius: 50%;
+    top: 0.15rem;
+    left: 0.15rem;
+    transition: all ease 0.3s;
+    box-shadow: 0 0 0.2rem #1e2d3f;
+}
+
+.toggle-pulse input:checked::before {
+    transform: translateX(1.5rem);
+    background-color: #2f5c7a;
+}
+
 /* -------------------------------------------------------- */
 
 @media (max-width: 1024px) {

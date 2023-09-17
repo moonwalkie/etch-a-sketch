@@ -1,8 +1,9 @@
 const sketch = document.querySelector('.sketch');
 let isDrawing = false; // Flag to track drawing state
-let isRainbow = false; // Flag to track rainbow mode
+let isRainbow = false; // Flag to track rainbow state
 let isBorderEnabled = false; // Flag to track border toggle state
 let isRadiusEnabled = false; // Flag to track radius toggle state
+let isPulseDisabled = false; // Flag to track pulse toggle state
 
 // Function to create the grid
 function createGrid(rows, columns) {
@@ -60,6 +61,7 @@ const gridSizeSlider = document.querySelector('#setgrid');
 const gridSizeText = document.querySelector('#gridSizeText');
 const borderToggle = document.getElementById('borderToggle');
 const radiusToggle = document.getElementById('radiusToggle');
+const pulseToggle = document.getElementById('pulseToggle');
 
 btnDraw.addEventListener('click', () => {
     isDrawing = !isDrawing; // Toggle drawing state
@@ -127,6 +129,22 @@ radiusToggle.addEventListener('change', () => {
             cell.classList.remove('radius');
         }
     });
+});
+
+// Event listener for pulse toggle
+pulseToggle.addEventListener('change', () => {
+    isPulseDisabled = pulseToggle.checked; // Update the pulse toggle state
+
+    const ellipse = document.querySelector('.ellipse');
+    const togglePulseText = document.querySelector('.toggle-pulse label');
+    if (isPulseDisabled) {
+        ellipse.style.cssText = 'display: none;';
+        togglePulseText.style.cssText = 'color: #24414e;';
+    } else {
+        ellipse.style.cssText = 'display: inline; animation: pulsate 4s ease-in-out infinite;';
+        togglePulseText.style.cssText = 'color: #5396b4';
+    }
+
 });
 
 function getRandomColor() {
