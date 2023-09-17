@@ -59,7 +59,7 @@ body .container {
 
 .mode button {
     border: none;
-    background: linear-gradient(to bottom, #00b97f 30%, #336474 70%);
+    background: linear-gradient(to bottom, #00b97f 30%, #2f5c7a 70%);
     background-attachment: fixed;
     border-radius: 0.5rem;
     padding: 0.6rem 1.2rem;
