@@ -1,6 +1,8 @@
 const sketch = document.querySelector('.sketch');
 let isDrawing = false; // Flag to track drawing state
 let isRainbow = false; // Flag to track rainbow mode
+let isBorderEnabled = false; // Flag to track border toggle state
+let isRadiusEnabled = false; // Flag to track radius toggle state
 
 // Function to create the grid
 function createGrid(rows, columns) {
@@ -11,6 +13,14 @@ function createGrid(rows, columns) {
         const cell = document.createElement('div');
         cell.classList.add('cell');
         sketch.appendChild(cell);
+
+        // Apply border and radius styles based on toggle states
+        if (isBorderEnabled) {
+            cell.classList.add('border');
+        }
+        if (isRadiusEnabled) {
+            cell.classList.add('radius');
+        }
     }
 
     const cellWidth = sketch.clientWidth / columns; // Calculate cell width
@@ -48,6 +58,8 @@ const btnRainbow = document.querySelector('.btn.rainbow');
 const btnClear = document.querySelector('.btn.clear');
 const gridSizeSlider = document.querySelector('#setgrid');
 const gridSizeText = document.querySelector('#gridSizeText');
+const borderToggle = document.getElementById('borderToggle');
+const radiusToggle = document.getElementById('radiusToggle');
 
 btnDraw.addEventListener('click', () => {
     isDrawing = !isDrawing; // Toggle drawing state
@@ -85,6 +97,37 @@ gridSizeSlider.addEventListener('input', () => {
     gridSizeText.textContent = `${rows}x${columns}`;
 });
 
+// Event listener for border toggle switch
+borderToggle.addEventListener('change', () => {
+    isBorderEnabled = borderToggle.checked; // Update the border toggle state
+
+    const cells = document.querySelectorAll('.cell');
+    cells.forEach((cell) => {
+        if (isBorderEnabled) {
+            cell.classList.add('border');
+            cell.style.borderColor = '#112720'; // Set border color
+            cell.style.opacity = '1'; // Set opacity to fully visible
+        } else {
+            cell.classList.remove('border');
+            cell.style.borderColor = 'transparent'; // Set border color to transparent
+            cell.style.opacity = '1'; // Set opacity to fully visible
+        }
+    });
+});
+
+// Event listener for radius toggle switch
+radiusToggle.addEventListener('change', () => {
+    isRadiusEnabled = radiusToggle.checked; // Update the radius toggle state
+
+    const cells = document.querySelectorAll('.cell');
+    cells.forEach((cell) => {
+        if (isRadiusEnabled) {
+            cell.classList.add('radius');
+        } else {
+            cell.classList.remove('radius');
+        }
+    });
+});
 
 function getRandomColor() {
     return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
