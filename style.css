@@ -347,7 +347,6 @@ body .container {
 
     body .container {
         flex-direction: column-reverse;
-        margin: 0 4rem;
     }
 
     .mode {
