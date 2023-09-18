@@ -1,8 +1,8 @@
 # Etch-a-Sketch
 
-Live site: <a href="https://moonwalkie.github.io/etch-a-sketch/" target="_blank">
+Live site: https://moonwalkie.github.io/etch-a-sketch/
 
-<a href="https://moonwalkie.github.io/etch-a-sketch/" target="_blank"><img src="./assets/preview.png"></a>
+<a href="https://moonwalkie.github.io/etch-a-sketch/"><img src="./assets/preview.png"></a>
 
 ## Overview
 
