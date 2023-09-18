@@ -147,6 +147,24 @@ pulseToggle.addEventListener('change', () => {
 
 });
 
+const flipper = document.querySelector('.flipper');
+const mwFront = document.querySelector('.mw.front');
+const mwBack = document.querySelector('.mw.back');
+
+// Event listener for logo 3d flip
+flipper.addEventListener('mouseenter', () => {
+    flipper.style.transform = 'rotateY(180deg)';
+    mwFront.classList.add('hide');
+    mwBack.classList.remove('hide');
+});
+
+flipper.addEventListener('mouseleave', () => {
+    flipper.style.transform = 'rotateY(0deg)';
+    mwBack.classList.add('hide');
+    mwFront.classList.remove('hide');
+});
+
+
 function getRandomColor() {
     return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
